@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FadeBook</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign up</string>
+    <string name="a_new_exacting_way_to_learn_languages">A new exacting way to learn languages</string>
+    <string name="choose_your_nlanguages">Choose your languages</string>
+    <string name="i_want_to_learn">I want to learn</string>
+</resources>

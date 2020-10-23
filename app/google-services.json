@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "292030047172",
+    "firebase_url": "https://fadebook-e9a1d.firebaseio.com",
+    "project_id": "fadebook-e9a1d",
+    "storage_bucket": "fadebook-e9a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292030047172:android:5185df246735c107083a91",
+        "android_client_info": {
+          "package_name": "com.example.fadebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292030047172-8c4onk3dpaq3oq0cj6qeqojgm0kp0f4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzIKWwg58q0vK7cXlSlRmdayUeEBaKZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292030047172-8c4onk3dpaq3oq0cj6qeqojgm0kp0f4q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
