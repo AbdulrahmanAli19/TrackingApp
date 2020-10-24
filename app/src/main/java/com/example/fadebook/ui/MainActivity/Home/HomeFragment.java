@@ -101,7 +101,6 @@ public class HomeFragment extends Fragment {
         SearchView searchView = (SearchView) menu.getItem(0).getActionView();
         searchView.setQueryHint("Full name");
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -116,7 +115,6 @@ public class HomeFragment extends Fragment {
                 }
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
@@ -124,9 +122,19 @@ public class HomeFragment extends Fragment {
                     emptyView.setVisibility(View.VISIBLE);
                     txtNotFound.setText("can't find "+newText);
                 }else {
+                    Log.d(TAG, "onQueryTextChange: called");
                     emptyView.setVisibility(View.GONE);
                     txtNotFound.setText("");
                 }
+                return false;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                Log.d(TAG, "onClose: called,");
+                emptyView.setVisibility(View.GONE);
+                txtNotFound.setText("");
                 return false;
             }
         });
