@@ -1,19 +1,30 @@
-package com.example.fadebook.ui.MainActivity.Home;
+package com.example.fadebook.pojo.modules;
 
 public class Users {
     private String name;
     private String email;
     private String uid;
-    private String state;
+    private boolean state;
+    private String imageUrl;
 
     public Users() {
+
     }
 
-    public Users(String name, String email, String uid, String state) {
+    public Users(String name, String email, String uid, boolean state, String imgUrl) {
         this.name = name;
         this.email = email;
         this.uid = uid;
         this.state = state;
+        this.imageUrl = imgUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -40,11 +51,11 @@ public class Users {
         this.uid = uid;
     }
 
-    public String getState() {
+    public boolean getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(boolean state) {
         this.state = state;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.fadebook.ui.MainActivity.SelectLang;
+package com.example.fadebook.pojo.modules;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.example.fadebook.ui.MainActivity.SelectLang;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fadebook.R;
-
-import java.util.List;
-import java.util.Locale;
+import com.example.fadebook.pojo.modules.LangInfo;
 
 public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.LanguagesViewHolder> {
 

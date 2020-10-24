@@ -1,8 +1,6 @@
 package com.example.fadebook.ui.MainActivity.SelectLang;
 
 import android.os.Bundle;
-import android.os.LocaleList;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.blongho.country_data.World;
 import com.example.fadebook.R;
+import com.example.fadebook.pojo.modules.LangInfo;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;

@@ -5,16 +5,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.fadebook.R;
+import com.example.fadebook.ui.MainActivity.Home.HomeFragment;
 import com.example.fadebook.ui.MainActivity.SignUp.SignupFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +34,10 @@ public class SigninFragment extends Fragment {
     TextInputLayout inputEmail;
     @BindView(R.id.input_pass)
     TextInputLayout inputPass;
+    @BindView(R.id.signin_progressbar)
+    ProgressBar progressBar;
+    @BindView(R.id.main_signin_layout)
+    ConstraintLayout mainLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,19 +53,27 @@ public class SigninFragment extends Fragment {
 
     @OnClick(R.id.card_sing_in)
     public void singIn() {
-        Log.d(TAG, "singIn: called.");
+        progressBar.setVisibility(View.VISIBLE);
+        mainLayout.setVisibility(View.GONE);
         String email = inputEmail.getEditText().getText().toString();
         String pass = inputPass.getEditText().getText().toString();
-        Log.d(TAG, "singIn: email:" + email + "pass:" + pass.isEmpty());
         if (!email.isEmpty() && !pass.isEmpty()) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Log.d(TAG, "onComplete: Successful Successful");
+                        progressBar.setVisibility(View.GONE);
+                        mainLayout.setVisibility(View.VISIBLE);
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, new HomeFragment())
+                                .commit();
                     } else {
+                        progressBar.setVisibility(View.GONE);
+                        mainLayout.setVisibility(View.VISIBLE);
                         Log.d(TAG, "onComplete: " + task.getException().toString());
+                        showSnackBar(task.getException().getMessage());
                     }
                 }
             });
@@ -101,4 +118,16 @@ public class SigninFragment extends Fragment {
         ///TODO : Sign in using facebook auth
     }
 
+    private void showSnackBar(String message) {
+        View parentLayout = getActivity().findViewById(android.R.id.content);
+        Snackbar.make(parentLayout, message, Snackbar.LENGTH_INDEFINITE)
+                .setAction("CLOSE", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+                .show();
+    }
 }

@@ -11,4 +11,12 @@
     <string name="a_new_exacting_way_to_learn_languages">A new exacting way to learn languages</string>
     <string name="choose_your_nlanguages">Choose your languages</string>
     <string name="i_want_to_learn">I want to learn</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="sign_out">Sign out</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="search">Search</string>
+    <string name="full_name">Full Name</string>
+    <string name="edit_your_info">Edit your info</string>
+    <string name="save">Save</string>
 </resources>

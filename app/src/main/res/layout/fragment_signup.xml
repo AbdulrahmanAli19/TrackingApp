@@ -76,18 +76,72 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_name"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/img_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/select_img"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_person"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/select_img"
+                        android:background="#80FFFFFF"
+                        android:gravity="center"
+                        android:text="TapToChange"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/select_img"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_f_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="@string/name"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/img_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="@string/first_name"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_l_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_f_name"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/img_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="@string/last_name"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_email"
@@ -143,7 +197,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_sing_up"
+            android:id="@+id/card_save"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="24dp"
