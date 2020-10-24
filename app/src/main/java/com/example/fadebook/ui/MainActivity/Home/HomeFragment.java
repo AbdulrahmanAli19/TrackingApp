@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.home_menu, menu);
-        SearchView searchView = (SearchView) menu.getItem(0).getActionView();
+       /* SearchView searchView = (SearchView) menu.getItem(0).getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setQueryHint("Full name");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
                 adapter.getFilter().filter(newText);
                 return false;
             }
-        });
+        });*/
         super.onCreateOptionsMenu(menu, inflater);
     }
 
