@@ -60,7 +60,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         }
 
 
-        if (currentUser.getImageUrl().isEmpty()) {
+        if (currentUser.getImageUrl().isEmpty() || currentUser.getImageUrl().equals(null)) {
             holder.progressBar.setVisibility(View.GONE);
             holder.imgUser.setVisibility(View.VISIBLE);
             holder.imgUser.setImageDrawable(mContext.getDrawable(R.drawable.ic_person));

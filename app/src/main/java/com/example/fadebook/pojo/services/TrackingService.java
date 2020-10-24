@@ -27,7 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class TrackingService extends Service {
     private static final String TAG = "TrackingService";
     private final static int CHANNEL_ID = 1;
-    private final static String CURRENT_USER_ID = FirebaseAuth.getInstance().getUid();
+    private static String CURRENT_USER_ID = FirebaseAuth.getInstance().getUid();
     public static final String NOTIFICATION_CHANNEL_ID = "Tracking";
     private FusedLocationProviderClient provider;
     private LocationRequest locationRequest;
@@ -59,7 +59,7 @@ public class TrackingService extends Service {
                 .setSmallIcon(R.drawable.ic_location)
                 .build();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q ){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(CHANNEL_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
         } else {
             startForeground(CHANNEL_ID, notification);

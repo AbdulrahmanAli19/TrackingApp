@@ -16,11 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -56,6 +58,10 @@ public class HomeFragment extends Fragment {
     private UsersAdapter adapter;
     @BindView(R.id.home_recycler)
     RecyclerView recyclerView;
+    @BindView(R.id.empty_view)
+    ConstraintLayout emptyView;
+    @BindView(R.id.txt_not_found)
+    TextView txtNotFound;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,7 +107,12 @@ public class HomeFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 adapter.getFilter().filter(query);
                 if (adapter.getItemCount() == 0) {
-                    ///TODO : set Empty layout
+                    ///TODO : FIX EMPTY VIEW
+                    emptyView.setVisibility(View.VISIBLE);
+                    txtNotFound.setText("can't find "+query);
+                }else {
+                    emptyView.setVisibility(View.GONE);
+                    txtNotFound.setText("");
                 }
                 return false;
             }
@@ -110,7 +121,11 @@ public class HomeFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 if (adapter.getItemCount() == 0) {
-                    ///TODO : set Empty layout
+                    emptyView.setVisibility(View.VISIBLE);
+                    txtNotFound.setText("can't find "+newText);
+                }else {
+                    emptyView.setVisibility(View.GONE);
+                    txtNotFound.setText("");
                 }
                 return false;
             }
