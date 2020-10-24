@@ -121,12 +121,15 @@ public class HomeFragment extends Fragment {
                     @Override
                     public boolean onQueryTextSubmit(String query) {
                         adapter.getFilter().filter(query);
+                        if (adapter.getItemCount() == 0) {
+                            ///TODO : set Empty layout
+                        }
                         return false;
                     }
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
-                        adapter.getFilter().filter(newText);
+                        //adapter.getFilter().filter(newText);
                         return false;
                     }
                 });
