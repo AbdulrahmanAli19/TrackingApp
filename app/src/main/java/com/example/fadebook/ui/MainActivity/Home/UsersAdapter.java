@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ProgressBar;
@@ -24,10 +25,10 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> implements Filterable {
-
+    private static final String TAG = "UsersAdapter";
     private Context mContext;
     private List<Users> users;
-    private List<Users> fullUsers;
+    private final List<Users> fullUsers;
 
     public UsersAdapter(Context mContext, List<Users> users) {
         this.mContext = mContext;

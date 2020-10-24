@@ -15,11 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -92,6 +92,26 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.home_menu, menu);
+        SearchView searchView = (SearchView) menu.getItem(0).getActionView();
+        searchView.setQueryHint("Full name");
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                if (adapter.getItemCount() == 0) {
+                    ///TODO : set Empty layout
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -112,27 +132,6 @@ public class HomeFragment extends Fragment {
                         .add(R.id.container, new EditFragment())
                         .addToBackStack(null)
                         .commit();
-                break;
-            case R.id.action_search:
-                SearchView searchView = (SearchView) item.getActionView();
-                searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                searchView.setQueryHint("Full name");
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        adapter.getFilter().filter(query);
-                        if (adapter.getItemCount() == 0) {
-                            ///TODO : set Empty layout
-                        }
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        //adapter.getFilter().filter(newText);
-                        return false;
-                    }
-                });
                 break;
         }
         return true;
