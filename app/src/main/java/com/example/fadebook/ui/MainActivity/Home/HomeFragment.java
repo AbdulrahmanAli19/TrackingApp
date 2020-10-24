@@ -108,7 +108,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //adapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
+                if (adapter.getItemCount() == 0) {
+                    ///TODO : set Empty layout
+                }
                 return false;
             }
         });
