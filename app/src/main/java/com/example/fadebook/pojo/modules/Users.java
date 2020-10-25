@@ -6,6 +6,8 @@ public class Users {
     private String uid;
     private boolean state;
     private String imageUrl;
+    private double lat;
+    private double lon;
 
     public Users() {
 
@@ -55,7 +57,19 @@ public class Users {
         return state;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 }

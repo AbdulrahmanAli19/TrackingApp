@@ -24,6 +24,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TrackingService extends Service {
     private static final String TAG = "TrackingService";
     private final static int CHANNEL_ID = 1;
@@ -75,10 +78,13 @@ public class TrackingService extends Service {
         public void onLocationResult(LocationResult locationResult) {
             super.onLocationResult(locationResult);
             Location location = locationResult.getLastLocation();
+            Map<String, Object> loc = new HashMap<>();
+            loc.put("lon",location.getLongitude());
+            loc.put("lat",location.getLatitude());
             FirebaseFirestore.getInstance()
                     .collection("users")
                     .document(CURRENT_USER_ID)
-                    .update("currentLocation", location)
+                    .update("currentLocation", loc)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {

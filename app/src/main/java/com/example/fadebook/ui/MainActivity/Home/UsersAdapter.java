@@ -1,6 +1,7 @@
 package com.example.fadebook.ui.MainActivity.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fadebook.R;
 import com.example.fadebook.pojo.modules.Users;
+import com.example.fadebook.ui.MapsActivity.MapsActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -28,7 +30,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     private static final String TAG = "UsersAdapter";
     private Context mContext;
     private List<Users> users;
-    private final List<Users> fullUsers;
+    private List<Users> fullUsers;
 
     public UsersAdapter(Context mContext, List<Users> users) {
         this.mContext = mContext;
@@ -85,7 +87,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(mContext, MapsActivity.class);
+                ///TODO : send the lat ang lon to MapsActivity.class
+                intent.putExtra("lon", currentUser.getLon());
+                intent.putExtra("lat", currentUser.getLat());
+                mContext.startActivity(intent);
             }
         });
 

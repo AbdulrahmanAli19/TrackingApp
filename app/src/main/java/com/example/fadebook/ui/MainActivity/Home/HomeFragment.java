@@ -108,21 +108,21 @@ public class HomeFragment extends Fragment {
                 if (adapter.getItemCount() == 0) {
                     ///TODO : FIX EMPTY VIEW
                     emptyView.setVisibility(View.VISIBLE);
-                    txtNotFound.setText("can't find "+query);
-                }else {
+                    txtNotFound.setText("can't find " + query);
+                } else {
                     emptyView.setVisibility(View.GONE);
                     txtNotFound.setText("");
                 }
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 if (adapter.getItemCount() == 0) {
                     emptyView.setVisibility(View.VISIBLE);
-                    txtNotFound.setText("can't find "+newText);
-                }else {
-                    Log.d(TAG, "onQueryTextChange: called");
+                    txtNotFound.setText("can't find " + newText);
+                } else {
                     emptyView.setVisibility(View.GONE);
                     txtNotFound.setText("");
                 }
@@ -271,7 +271,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void startTracking() {
-        Log.d(TAG, "startTracking: started");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             getActivity().startForegroundService(new Intent(getActivity(), TrackingService.class));
         } else {
